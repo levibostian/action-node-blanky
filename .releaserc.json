@@ -1,0 +1,18 @@
+{
+  "tagFormat": "v{version}",
+  "branches": [
+    "main",
+    { "name": "beta", "prerelease": true },
+    { "name": "alpha", "prerelease": true }
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "npm run prepare-action-deploy"
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
