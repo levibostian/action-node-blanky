@@ -19,6 +19,13 @@ When writing GitHub Actions, sometimes there are some inconveniences. This inclu
 - Contain configuration files to setup all tools I tend to use in my development flow.
 - Start with zero dependencies. Your Action contains the dependencies you need, no more.
 
+# Getting started
+
+- Enable GitHub Actions for your repository.
+- If you have not done so already, create a GitHub account for bot purposes.
+- Add your bot account in the repository `/settings/access`.
+- Create secret `BOT_PUSH_TOKEN` with key being a GitHub personal access token with push permission so the bot can push to the repository (the bot will be making git tags and releases on repository).
+
 # Deployment
 
 This project is setup with continuous deployment. When you deploy to `main`, `beta`, or `alpha` branches we will make a deployment. GitHub Actions are all deployed by simply making a GitHub tag/release.

@@ -26,12 +26,6 @@ jobs:
       - name: Compile 
         run: | 
           npm run build
-      - name: Prepare for deploying Action
-        run: |
-          rm -rf node_modules
-          rm .gitignore
-          npm install --production
-
       - name: Deploy via semantic release 
         uses: cycjimmy/semantic-release-action@v2
         with: 
@@ -40,4 +34,4 @@ jobs:
           extra_plugins: |
             @semantic-release/exec@5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOT_PUSH_TOKEN }}
