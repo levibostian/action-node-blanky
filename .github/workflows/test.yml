@@ -1,19 +1,14 @@
 name: Test
 # only run on PRs and when push a commit on a branch that we don't deploy on. 
 on: 
-  push:
-    # branches-ignore: # we deploy on these branches. No need to test on them. 
-    # NOTE: We are enabling testing on these branches because we want codecov to generate a report on that branch so we have something to compare to. 
-      # - 'master'
-      # - 'beta'
-    tags-ignore: # Don't run tests on tags as tags are made off of master branch. 
+  push:    
+    branches:
+      - '*' # because we use codecov, we want to have tests run on all branches to generate a report on it. 
+    tags-ignore: # Don't run tests on tags as tags are made off of main branch. 
       - '*'
   pull_request: # Run on all PRs. 
     branches:
       - '*'
-
-env:
-  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
 jobs:
   test:
@@ -32,7 +27,5 @@ jobs:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
       - name: Install dependencies
         run: npm ci 
-      - name: Show what will be deployed
-        run: npm run build && npm publish dist --dry-run
       - name: Run tests 
-        run:  npm run test && npx codecov
+        run:  npm run test

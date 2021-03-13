@@ -1,0 +1,14 @@
+name: "Action Node Blanky"
+description: "An action that doesn't really do anything. Just a boilerplate template."
+author: "levibostian"
+inputs: # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs
+  text:
+    description: "Text to output in the action, prepended by Text:"
+    default: "yo"
+    required: true
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  icon: 'award'  
+  color: 'green'

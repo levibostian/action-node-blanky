@@ -2,12 +2,15 @@ name: Deployment
 on:
   push:
     branches:
-      - master
+      - main
       - beta
+      - alpha
 
 jobs:
   deploy:
-    name: Deploy to npm
+    name: Deploy git tags
+    # skip if '[skip ci]' exists in commit message 
+    if: ${{ !contains(format('{0} {1}', github.event.head_commit.message, github.event.pull_request.title), '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,10 +21,23 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
-      - name: Install dependencies
-        run: npm ci 
-      - name: Deploy
+      - name: Install dependencies for building 
+        run: npm ci
+      - name: Compile 
+        run: | 
+          npm run build
+      - name: Prepare for deploying Action
+        run: |
+          rm -rf node_modules
+          rm .gitignore
+          npm install --production
+
+      - name: Deploy via semantic release 
+        uses: cycjimmy/semantic-release-action@v2
+        with: 
+          # version numbers below can be in many forms: M, M.m, M.m.p
+          semantic_version: 17
+          extra_plugins: |
+            @semantic-release/exec@5
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_PUSH_TOKEN }} # personal access token with push access to the repo
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # npm token to deploy to npm 
-        run: npx semantic-release
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

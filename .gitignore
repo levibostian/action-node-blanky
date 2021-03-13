@@ -1,5 +1,6 @@
 coverage/
 dist/
+junit.xml
 
 # Logs
 logs
