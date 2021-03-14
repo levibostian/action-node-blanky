@@ -26,7 +26,20 @@ When writing GitHub Actions, sometimes there are some inconveniences. This inclu
 - Add your bot account in the repository `/settings/access`.
 - Create secret `BOT_PUSH_TOKEN` with key being a GitHub personal access token with push permission so the bot can push to the repository (the bot will be making git tags and releases on repository).
 
-# Deployment
+# Notes
+
+## node version
+
+Currently set to `node12`. This is because the `action.yml` node version is set to 12. When v14 releases on GitHub Actions, we can bump the node version.
+
+To update the node version, change...
+
+- `.nvmrc`
+- `tsconfig.json` > `extends` bump to node version.
+- `.eslintrc.json` > `ecmaVersion` to version of node supported. This is easy to find by going into `tsconfig` and find what `target` is set.
+- `action.yml` > `runs.using` change node version.
+
+## Deployment
 
 This project is setup with continuous deployment. When you deploy to `main`, `beta`, or `alpha` branches we will make a deployment. GitHub Actions are all deployed by simply making a GitHub tag/release.
 
