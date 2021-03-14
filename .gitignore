@@ -1,5 +1,4 @@
 coverage/
-dist/
 junit.xml
 
 # Logs
@@ -84,7 +83,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist
 
 # Gatsby files
 .cache/

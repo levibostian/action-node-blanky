@@ -18,22 +18,25 @@ jobs:
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
       - name: Setup node
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v2
         with:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
       - name: Install dependencies for building 
         run: npm ci
       - name: Compile 
         run: | 
-          npx tsc
-      - name: Prepare for deployment 
-        run: | 
-            rm -rf node_modules && rm .gitignore && npm install --production
-            git add -A && git commit -m "chore: prepare to deploy"
+          npx ncc build app/index.ts -o dist
+      # Perform git related tasks inside of semantic-release because `git config user...` is already setup. It's easier to run commands in there with exec plugin.
       - name: Deploy via semantic release 
         uses: cycjimmy/semantic-release-action@v2
         with: 
           # version numbers below can be in many forms: M, M.m, M.m.p
           semantic_version: 17
+          extra_plugins: |
+            @semantic-release/commit-analyzer@8
+            @semantic-release/release-notes-generator@9
+            @semantic-release/changelog@5
+            @semantic-release/git@9
+            @semantic-release/github@7
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_PUSH_TOKEN }}

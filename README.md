@@ -1,3 +1,7 @@
+Latest (recommended) [![npm latest version](https://img.shields.io/npm/v/levibostian/action-node-blanky/latest.svg)](https://www.npmjs.com/package/levibostian/action-node-blanky)
+Beta: [![npm beta version](https://img.shields.io/npm/v/levibostian/action-node-blanky/beta.svg)](https://www.npmjs.com/package/levibostian/action-node-blanky)
+Alpha: [![npm alpha version](https://img.shields.io/npm/v/levibostian/action-node-blanky/alpha.svg)](https://www.npmjs.com/package/levibostian/action-node-blanky)
+
 # action-node-blanky
 
 Opinionated boilerplate used to make and deploy GitHub actions using node.
