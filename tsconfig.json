@@ -1,17 +1,11 @@
-
 {
-    "extends": "@tsconfig/node12/tsconfig.json",
-    "compilerOptions": {
-      "noImplicitAny": true,
-      "baseUrl": ".",
-      "sourceMap": true,
-      "outDir": "dist",
-      "strict": true,
-      "noFallthroughCasesInSwitch": true,
-      "paths": {
-        "*": ["node_modules/*", "@types/*"]
-      },
-      "typeRoots": ["@types", "./node_modules/@types"]
+  "extends": "@levibostian/tsconfigs/node12/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "paths": {
+      "*": ["node_modules/*", "@types/*"]
     },
-    "include": ["app/**/*", "@types/**/*"]
-  }
+    "typeRoots": ["@types", "./node_modules/@types"]
+  },
+  "include": ["app/**/*", "@types/**/*"]
+}
