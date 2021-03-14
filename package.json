@@ -33,6 +33,7 @@
   "prettier": "@levibostian/prettier-config",
   "devDependencies": {
     "@levibostian/eslint-config-node": "^1.0.2",
+    "@levibostian/jest-config": "^1.0.1",
     "@levibostian/prettier-config": "^1.0.0",
     "@levibostian/tsconfigs": "^1.0.1",
     "@types/jest": "^26.0.15",
