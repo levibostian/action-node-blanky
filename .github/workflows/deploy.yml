@@ -25,13 +25,15 @@ jobs:
         run: npm ci
       - name: Compile 
         run: | 
-          npm run build
+          npx tsc
+      - name: Prepare for deployment 
+        run: | 
+            rm -rf node_modules && rm .gitignore && npm install --production
+            git add -A && git commit -m "chore: prepare to deploy"
       - name: Deploy via semantic release 
         uses: cycjimmy/semantic-release-action@v2
         with: 
           # version numbers below can be in many forms: M, M.m, M.m.p
           semantic_version: 17
-          extra_plugins: |
-            @semantic-release/exec@5
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_PUSH_TOKEN }}

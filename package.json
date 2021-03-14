@@ -5,8 +5,6 @@
   "scripts": {
     "test": "npx jest",
     "format": "npx prettier --write \"{app,tests}/**/*.ts\"",
-    "prepare-action-deploy": "rm -rf node_modules && rm .gitignore && npm install --production",
-    "build": "rm -rf dist || true && npx tsc && find dist -type f -name '*.test.js*' -delete && cp package*.json dist/ && cp LICENSE dist/ && cp README.md dist/",
     "lint": "npx eslint --fix --ext ts,js . && npx tsc --noEmit"
   },
   "repository": {
@@ -32,8 +30,10 @@
       "npm run format"
     ]
   },
+  "prettier": "@levibostian/prettier-config",
   "devDependencies": {
     "@levibostian/eslint-config-node": "^1.0.2",
+    "@levibostian/prettier-config": "^1.0.0",
     "@levibostian/tsconfigs": "^1.0.1",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.7",
