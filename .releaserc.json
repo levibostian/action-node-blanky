@@ -5,14 +5,5 @@
     { "name": "beta", "prerelease": true },
     { "name": "alpha", "prerelease": true }
   ],
-  "plugins": [
-    "@semantic-release/commit-analyzer",
-    [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "npm run prepare-action-deploy && git add -A && git commit -m 'chore: prepare to deploy ${nextRelease.version}'"
-      }
-    ],
-    "@semantic-release/github"
-  ]
+  "plugins": ["@semantic-release/commit-analyzer", "@semantic-release/github"]
 }
