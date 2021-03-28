@@ -1,5 +1,5 @@
 import { Output } from "./type/output"
-import core from "@actions/core"
+import * as core from "@actions/core"
 
 export const getOutputText = (inputText: string): string => {
   return `Text: ${inputText}`
