@@ -5,7 +5,8 @@
   "scripts": {
     "test": "npx jest",
     "format": "npx prettier --write \"{app,tests}/**/*.ts\"",
-    "lint": "npx eslint --fix --ext ts,js . && npx tsc --noEmit"
+    "lint": "npx eslint --fix --ext ts,js . && npx tsc --noEmit",
+    "compile": "npx ncc build app/index.ts -o dist"
   },
   "repository": {
     "type": "git",
