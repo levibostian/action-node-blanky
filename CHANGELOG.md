@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/levibostian/action-node-blanky/compare/v1.0.0...v1.0.1) (2021-03-28)
+
+
+### Bug Fixes
+
+* action input reading ([#4](https://github.com/levibostian/action-node-blanky/issues/4)) ([865ed41](https://github.com/levibostian/action-node-blanky/commit/865ed411bb968b874b317a8042b0d35ec3ac5e38))
+
 # 1.0.0 (2021-03-28)
 
 
