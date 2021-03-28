@@ -1,0 +1,11 @@
+# 1.0.0 (2021-03-28)
+
+
+### Bug Fixes
+
+* continuous delivery configuration ([d35793d](https://github.com/levibostian/action-node-blanky/commit/d35793dcac832dbd4d3db9281d742221a5acd2bc))
+
+
+### Features
+
+* setup project for continuous delivery ([#2](https://github.com/levibostian/action-node-blanky/issues/2)) ([a745a75](https://github.com/levibostian/action-node-blanky/commit/a745a756b4dd68987908eb396b4505ab7f8ec4a5))
