@@ -54,3 +54,7 @@ To update the node version, change...
 This project is setup with continuous deployment. When you deploy to `main`, `beta`, or `alpha` branches we will make a deployment. GitHub Actions are all deployed by simply making a GitHub tag/release.
 
 Tags/releases are made automatically using [semantic-release](https://github.com/semantic-release/semantic-release) as long as our git commit messages are written in the [conventional commit format](https://www.conventionalcommits.org/).
+
+# Credits
+
+- Inspiration for how to do compiling and testing action came from [this repo](https://github.com/actions/typescript-action). Great bas to start with that I added my own twists to (this repo _is_ opinionated after all).
