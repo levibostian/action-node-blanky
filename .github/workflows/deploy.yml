@@ -24,8 +24,7 @@ jobs:
       - name: Install dependencies for building 
         run: npm ci
       - name: Compile 
-        run: | 
-          npx ncc build app/index.ts -o dist
+        run: npm run compile 
       # Perform git related tasks inside of semantic-release because `git config user...` is already setup. It's easier to run commands in there with exec plugin.
       - name: Deploy via semantic release 
         uses: cycjimmy/semantic-release-action@v2
