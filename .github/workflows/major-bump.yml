@@ -10,5 +10,5 @@ jobs:
     steps:
       # Will automatically release vX for major releases after each deployment
       - uses: Actions-R-Us/actions-tagger@v2
-        env:
-          GITHUB_TOKEN: "${{ github.token }}"
+        with:
+          token: "${{ github.token }}"

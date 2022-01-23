@@ -1,28 +1,18 @@
 name: Test
-# only run on PRs and when push a commit on a branch that we don't deploy on. 
-on: 
-  push:    
-    branches:
-      - '*' # because we use codecov, we want to have tests run on all branches to generate a report on it. 
-    tags-ignore: # Don't run tests on tags as tags are made off of main branch. 
-      - '*'
-  pull_request: # Run on all PRs. 
-    branches:
-      - '*'
+
+on: [push]
 
 jobs:
   test:
-    name: Test 
+    name: Run tests 
     runs-on: ubuntu-latest
-    # skip if '[skip ci]' exists in commit message 
-    if: ${{ !contains(format('{0} {1}', github.event.head_commit.message, github.event.pull_request.title), '[skip ci]') }}
     steps:
       - uses: actions/checkout@v2
       - name: Read .nvmrc
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
       - name: Setup node
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v2
         with:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
       - name: Install dependencies
