@@ -34,7 +34,7 @@ When writing GitHub Actions, sometimes there are some inconveniences. This inclu
 
 ## node version
 
-Currently set to `node12`. This is because the `action.yml` node version is set to 12. When v14 releases on GitHub Actions, we can bump the node version.
+Currently set to `node16`.
 
 To update the node version, change...
 
