@@ -1,16 +1,11 @@
-name: Deployment 
+name: Deploy action
 on:
   push:
-    branches:
-      - main
-      - beta
-      - alpha
+    branches: [main, beta, alpha]
 
 jobs:
   deploy:
     name: Deploy git tags
-    # skip if '[skip ci]' exists in commit message 
-    if: ${{ !contains(format('{0} {1}', github.event.head_commit.message, github.event.pull_request.title), '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,12 +25,12 @@ jobs:
         uses: cycjimmy/semantic-release-action@v2
         with: 
           # version numbers below can be in many forms: M, M.m, M.m.p
-          semantic_version: 17
+          semantic_version: 18
           extra_plugins: |
-            @semantic-release/commit-analyzer@8
-            @semantic-release/release-notes-generator@9
-            @semantic-release/changelog@5
-            @semantic-release/git@9
-            @semantic-release/github@7
+            @semantic-release/commit-analyzer@9
+            @semantic-release/release-notes-generator@10
+            @semantic-release/changelog@6
+            @semantic-release/git@10
+            @semantic-release/github@8
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_PUSH_TOKEN }}
