@@ -7,7 +7,7 @@ inputs: # https://docs.github.com/en/actions/creating-actions/metadata-syntax-fo
     default: "yo"
     required: true
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"
 branding:
   icon: 'award'  
